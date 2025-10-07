@@ -36,6 +36,6 @@ class Solution:
 
         result = []
         for idx in invalid_indices:
-            result.append(parsed_transactions[idx].original_string)
+            result.append(transactions[idx])
 
         return result
