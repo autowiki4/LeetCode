@@ -1,18 +1,14 @@
-from collections import Counter
-import heapq
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
-        counter = Counter(nums)
+        counter = {}
+        for num in nums:
+            counter[num] = counter.get(num, 0) + 1
+        buckets = [[] for _ in range(len(nums)+1)]
 
-        frequency = []
-        heapq.heapify(frequency)
-
-        for num, count in counter.items():
-            heapq.heappush(frequency, (-count,num))
-        
-        output = []
-
-        for _ in range(k):
-            output.append(heapq.heappop(frequency)[1])
-        
-        return output
+        for num, freq in counter.items():
+            buckets[freq].append(num)
+        result = []
+        for i in range(len(buckets)-1, 0, -1):
+            result.extend(buckets[i])
+            if len(result) >= k:
+                return result[:k]
