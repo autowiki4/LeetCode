@@ -1,24 +1,22 @@
 class Solution:
     def decodeString(self, s: str) -> str:
+        seq = []
         digits = []
-        strings = []
-        curr_num = 0
-        curr_str = ''
+        num = 0
+        curr = ''
 
         for c in s:
             if c.isdigit():
-                curr_num = curr_num * 10 + int(c)
+                num = num*10 + int(c)
             elif c == '[':
-                digits.append(curr_num)
-                strings.append(curr_str)
-                curr_num = 0
-                curr_str = ''
+                digits.append(num)
+                seq.append(curr)
+                curr = ''
+                num = 0
             elif c == ']':
-                rep = digits.pop()
-                prev = strings.pop()
-                curr_str = prev + curr_str*rep
+                number = digits.pop()
+                prev = seq.pop()
+                curr = prev + curr*number
             else:
-                curr_str += c
-        return curr_str
-            
-        
+                curr += c
+        return curr
