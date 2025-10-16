@@ -1,6 +1,6 @@
 class Solution:
     def romanToInt(self, s: str) -> int:
-        roman_num = {
+        roman = {
             'I': 1,
             'V': 5,
             'X': 10,
@@ -9,12 +9,21 @@ class Solution:
             'D': 500,
             'M': 1000
         }
-        roman_to_num = 0
-        for i in range(len(s) - 1):
-            if roman_num[s[i]] < roman_num[s[i+1]]:
-                    roman_to_num -= roman_num[s[i]]
+        integer = 0
+        n = len(s)
+        i, j = 0, 1
+        while i < n:
+            if j >= n:
+                integer += roman[s[i]]
+                break
+            after = roman[s[j]]
+            before = roman[s[i]]
+            if after > before:
+                integer += after-before
+                i += 2
+                j += 2
             else:
-                roman_to_num += roman_num[s[i]]
-        roman_to_num += roman_num[s[-1]]
-        return roman_to_num 
-        
+                integer += before
+                i += 1
+                j += 1
+        return integer
