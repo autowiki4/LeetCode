@@ -5,27 +5,25 @@ class Solution:
             return 0
         sign = 1
         i = 0
-        
-        if s[0] == '-':
+
+        if s[i] == '-':
             sign = -1
             i = 1
-        elif s[0] == '+':
+        elif s[i] == '+':
             sign = 1
             i = 1
         elif not s[0].isdigit():
             return 0
-        result = 0
+        res = 0
         while i < len(s) and s[i].isdigit():
-            result = result * 10 + int(s[i])
+            res = res*10 + int(s[i])
             i += 1
-        
-        result *= sign
-        min_val = -2**31
+        res *= sign
+        min_val = -2 **31
         max_val = 2**31 - 1
-        
-        if result < min_val:
-            return min_val
-        elif result > max_val:
+        if res > max_val:
             return max_val
+        elif res < min_val:
+            return min_val
         else:
-            return result
+            return res
