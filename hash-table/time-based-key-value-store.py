@@ -14,7 +14,7 @@ class TimeMap:
         res = ''
         values = self.store[key]
         l, r = 0, len(values)-1
-        while l<=r:
+        while l <= r:
             m = (l+r)//2
             if values[m][0] <= timestamp:
                 res = values[m][1]
@@ -22,6 +22,7 @@ class TimeMap:
             else:
                 r = m-1
         return res
+
 
 
 # Your TimeMap object will be instantiated and called as such:
