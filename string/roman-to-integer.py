@@ -12,18 +12,9 @@ class Solution:
         integer = 0
         n = len(s)
         i, j = 0, 1
-        while i < n:
-            if j >= n:
-                integer += roman[s[i]]
-                break
-            after = roman[s[j]]
-            before = roman[s[i]]
-            if after > before:
-                integer += after-before
-                i += 2
-                j += 2
+        for i in range(n):
+            if i < n-1 and roman[s[i]] < roman[s[i+1]]:
+                integer -= roman[s[i]]
             else:
-                integer += before
-                i += 1
-                j += 1
+                integer += roman[s[i]]
         return integer
