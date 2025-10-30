@@ -1,5 +1,7 @@
 class Solution:
     def lengthOfLastWord(self, s: str) -> int:
+        if len(s) == 1 and s[0].isalpha():
+            return 1
         curr = 0
         last_len = 0
         n = len(s)
