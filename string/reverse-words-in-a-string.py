@@ -4,6 +4,5 @@ class Solution:
         n = len(words)
         mid = n//2
         for i in range(mid):
-            words[i], words[n-i-1] = words[n-i-1], words[i]
+            words[i], words[-i-1] = words[-i-1], words[i]
         return ' '.join(words)
-        
