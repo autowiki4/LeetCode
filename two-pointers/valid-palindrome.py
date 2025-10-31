@@ -2,7 +2,7 @@ class Solution:
     def isPalindrome(self, s: str) -> bool:
         s_lower = ''
         for c in s:
-            if c.isalpha():
+            if c.isalnum():
                 s_lower += c.lower()
         n = len(s_lower)
         mid = n // 2
