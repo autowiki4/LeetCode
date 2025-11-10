@@ -1,49 +1,48 @@
 class Solution:
     def spiralOrder(self, matrix: List[List[int]]) -> List[int]:
-        cols, rows = len(matrix), len(matrix[0])
+        rows, cols = len(matrix), len(matrix[0])
         output = []
 
         i, j = 0, 0
 
         up, down, left, right = 0, 1, 2, 3
-        direction = right
+        direct = right
 
         upwall = 0
-        downwall = cols - 1
+        rightwall = cols - 1
+        downwall = rows - 1
         leftwall = 0
-        rightwall = rows - 1
-
         while len(output) < rows * cols:
-            if direction == right:
+            if direct == right:
                 while j <= rightwall:
                     output.append(matrix[i][j])
                     j += 1
                 j -= 1
                 i += 1
-                direction = down
+                direct = down
                 upwall += 1
-            elif direction == down:
+            elif direct == down:
                 while i <= downwall:
                     output.append(matrix[i][j])
                     i += 1
                 i -= 1
                 j -= 1
-                direction = left
+                direct = left
                 rightwall -= 1
-            elif direction == left:
+            elif direct == left:
                 while j >= leftwall:
                     output.append(matrix[i][j])
                     j -= 1
                 j += 1
                 i -= 1
-                direction = up
+                direct = up
                 downwall -= 1
-            elif direction == up:
+            else:
                 while i >= upwall:
                     output.append(matrix[i][j])
                     i -= 1
                 i += 1
                 j += 1
-                direction = right
+                direct = right
                 leftwall += 1
-        return output
+        return output                    
