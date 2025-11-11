@@ -1,9 +1,20 @@
 class Solution:
     def isIsomorphic(self, s: str, t: str) -> bool:
+        if len(s) != len(t):
+            return False
         s_count = {}
-        for c in s:
-            s_count[c] = s_count.get(c, 0) + 1
         t_count = {}
-        for c in t:
-            t_count[c] = t_count.get(c, 0) + 1
-        return len(s_count) == len(t_count)
+        for i in range(len(s)):
+            sc = s[i]
+            tc = t[i]
+            if sc in s_count:
+                if s_count[sc] != tc:
+                    return False
+            else:
+                s_count[sc] = tc
+            if tc in t_count:
+                if t_count[tc] != sc:
+                    return False
+            else:
+                t_count[tc] = sc
+        return True
