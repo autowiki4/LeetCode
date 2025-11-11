@@ -1,14 +1,12 @@
 class Solution:
     def canConstruct(self, ransomNote: str, magazine: str) -> bool:
-        mag_count = {}
-        for char in magazine:
-            mag_count[char] = mag_count.get(char, 0) + 1
-        
-        for char in ransomNote:
-            if char not in mag_count:
+        counter = {}
+        for c in magazine:
+            counter[c] = counter.get(c, 0) + 1
+        for c in ransomNote:
+            if c not in counter:
                 return False
-            elif mag_count[char] == 1:
-                mag_count.pop(char)
-            else:
-                mag_count[char] -= 1
+            counter[c] -= 1
+            if counter[c] == 0:
+                del counter[c]
         return True
