@@ -4,10 +4,8 @@ class Solution:
 
         for i in range(len(nums)):
             num = nums[i]
-            if num not in track:
-                track[num] = []
-            else:
-                if abs(track[num][-1]-i) <= k:
+            if num in track:
+                if abs(track[num]-i) <= k:
                     return True
-            track[num].append(i)
+            track[num] = i
         return False
