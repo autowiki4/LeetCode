@@ -6,15 +6,8 @@ class MinStack:
 
     def push(self, val: int) -> None:
         self.stk.append(val)
-        if not self.track:
+        if not self.track or val <= self.track[-1]:
             self.track.append(val)
-        else:
-            if val <= self.track[-1]:
-                self.track.append(val)
-            else:
-                temp = self.track.pop()
-                self.track.append(val)
-                self.track.append(temp)
 
     def pop(self) -> None:
         last = self.stk.pop()
