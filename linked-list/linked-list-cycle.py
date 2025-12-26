@@ -16,5 +16,4 @@ class Solution:
 
             if slow is fast:
                 return True
-
         return False
