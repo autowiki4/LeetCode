@@ -8,7 +8,7 @@ class Solution:
         dummy = ListNode()
         curr = dummy
         while list1 and list2:
-            if list1.val > list2.val:
+            if list1.val  > list2.val:
                 curr.next = list2
                 list2 = list2.next
             else:
@@ -17,10 +17,6 @@ class Solution:
             curr = curr.next
         if list1:
             curr.next = list1
-            curr = curr.next
-        elif list2:
+        if list2:
             curr.next = list2
-            curr = curr.next
         return dummy.next
-
-        
