@@ -3,9 +3,9 @@ class Solution:
         l = 1
         curr = nums[0]
         for r in range(len(nums)):
-            if nums[r] != curr:
+            if curr != nums[r]:
                 curr = nums[r]
                 nums[l] = nums[r]
-                l += 1
+                l+= 1
         return l
         
